@@ -1,9 +1,19 @@
 Rails.application.routes.draw do
-  root  'static_pages#home'
-  get   'help'      => 'static_pages#help'
-  get   'about'     => 'static_pages#about'
-  get   'contact'   => 'static_pages#contact'
-  get   'categories' => 'categories#index'
+  root 'static_pages#home'
+  get 'help' => 'static_pages#help'
+  get 'about' => 'static_pages#about'
+  get 'contact'=> 'static_pages#contact'
+  get 'signup' => "users#new"
+  get 'signin' => "sessions#new"
+  post'signin' => "sessions#create"
+  delete 'signout' => 'sessions#destroy'
+  get 'categories' => 'categories#index'
+  
+  resources :users, only: :create
+  namespace :admin do
+    resources :users
+  end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -11,7 +21,7 @@ Rails.application.routes.draw do
   # root 'welcome#index'
 
   # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  #   get 'prcaoducts/:id' => 'catalog#view'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
