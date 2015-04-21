@@ -5,3 +5,20 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Category.create!(title: "Example Category",
+                 description: "- Always think how to improve the current code and design more\n
+                              - Do not asks basic questions\n
+                              - Do not ask the same a problem many times\n
+                              - Researches to resolve problems by himself\n
+                              - Discusses with others in team\n
+                              - Gives actively the idea about problems in team\n
+                              - Discusses in lectures\n
+                              - Ask leader about complex task\n
+                              - Support others\n
+                              - Comment on GitHub.")
+
+99.times do |n|
+  title = Faker::Lorem.sentence
+  description = Faker::Lorem.paragraph
+  Category.create!(title: title, description: description)
+end
