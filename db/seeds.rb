@@ -5,23 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Category.create!(title: "Example Category",
-                 description: "- Always think how to improve the current code and design more\n
-                              - Do not asks basic questions\n
-                              - Do not ask the same a problem many times\n
-                              - Researches to resolve problems by himself\n
-                              - Discusses with others in team\n
-                              - Gives actively the idea about problems in team\n
-                              - Discusses in lectures\n
-                              - Ask leader about complex task\n
-                              - Support others\n
-                              - Comment on GitHub.")
-
-99.times do |n|
-  title = Faker::Lorem.sentence
-  description = Faker::Lorem.paragraph
-  Category.create!(title: title, description: description)
-end
 
 User.create!(
   name: "Example User",
@@ -48,3 +31,33 @@ following = users[2..50]
 followers = users[3..40]
 following.each{|followed| user.follow(followed)}
 followers.each{|follower| follower.follow(user)}
+
+#Categories
+Category.create!(title: "Example Category",
+  description: "- Always think how to improve the current code and design more\n
+    - Do not asks basic questions\n
+    - Do not ask the same a problem many times\n
+    - Researches to resolve problems by himself\n
+    - Discusses with others in team\n
+    - Gives actively the idea about problems in team\n
+    - Discusses in lectures\n
+    - Ask leader about complex task\n
+    - Support others\n
+    - Comment on GitHub.")
+
+9.times do
+  title = Faker::Lorem.sentence
+  description = Faker::Lorem.paragraph
+  Category.create! title: title, description: description
+end
+
+#Words
+categories = Category.take 6
+5.times do
+  content = Faker::Lorem.word
+  categories.each{|category| category.words.create! content: content}
+end
+
+#Learned Words
+words = Category.first.words.take 3
+words.each{|word| User.first.learned_words.create! word_id: word.id}

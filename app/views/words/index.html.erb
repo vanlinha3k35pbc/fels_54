@@ -1,0 +1,11 @@
+<% provide :title, 'Wordlist' %>
+<h1>Wordlist</h1>
+
+<h2>Category</h2>
+<%= render 'category_filter' %>
+
+<ul class="words">
+  <%= render @words %>
+</ul>
+
+<%= will_paginate @words %>
