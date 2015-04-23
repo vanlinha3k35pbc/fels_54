@@ -362,6 +362,7 @@ input {
   margin-bottom: 20px;
 }
 
+
 /* following user */
 
 .stats {
@@ -415,5 +416,34 @@ input {
     width: 125px;
     border: 2px solid black;
   }
+}
+
+
+/* admin -category */
+
+.thead{
+  background-color: #C0C0C0;
+  td{
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  #taction{
+    width: 150px;
+  }
+}
+.c-title{
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.btn-cate{
+  width: 170px;
+  margin-left: 194px;
+}
+
+.d-category{
+  border: 1px solid black;
+  padding: 20px;
 }
 
