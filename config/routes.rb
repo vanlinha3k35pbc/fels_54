@@ -7,11 +7,10 @@ Rails.application.routes.draw do
   get 'signin' => "sessions#new"
   post'signin' => "sessions#create"
   delete 'signout' => 'sessions#destroy'
-  get 'categories' => 'categories#index'
-  
   resources :users, only: [:create, :show]
 
-  resources :relationships, only: [:create, :destroy]
+  resources :categories, only: :index
+  resources :words, only: :index
   
   resources :users do
     resources :followings, only: [:index]
@@ -24,8 +23,8 @@ Rails.application.routes.draw do
       resources :words
     end
   end 
-
  
+  resources :relationships, only: [:create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

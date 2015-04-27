@@ -1,0 +1,13 @@
+<%= form_tag words_path, method: :get do %>
+  <%= select_tag "category_id",
+    options_for_select(@categories.collect{|c| [c.title,c.id]},
+    @category.id) %>
+
+  <% {learned_words: "Learned", not_learned_words: "Not Learned", all: "All"}
+    .each do |value, label| %>
+    <%= radio_button_tag :filter, value, value.to_s == @filter %>
+    <%= label_tag "filter_#{value}", label %>
+  <% end %>
+
+  <%= submit_tag "Filter", class: "btn btn-primary" %>
+<% end %>

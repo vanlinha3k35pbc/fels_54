@@ -12,7 +12,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
-ActiveRecord::Schema.define(version: 20150424064759) do
+ActiveRecord::Schema.define(version: 20150427034147) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "content"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 20150424064759) do
     t.datetime "updated_at",  null: false
     t.text     "description"
   end
+
+  create_table "learned_words", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "word_id"
+  end
+
+  add_index "learned_words", ["user_id"], name: "index_learned_words_on_user_id"
+  add_index "learned_words", ["word_id"], name: "index_learned_words_on_word_id"
 
   create_table "lessons", force: :cascade do |t|
     t.datetime "created_at", null: false
