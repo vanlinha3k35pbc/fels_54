@@ -9,9 +9,11 @@ Rails.application.routes.draw do
   delete 'signout' => 'sessions#destroy'
   resources :users, only: [:create, :show, :index]
 
-  resources :categories, only: :index
+  resources :categories, only: :index do
+    resources :lessons, only: [:new, :create, :show]
+  end
   resources :words, only: :index
-  
+
   resources :users do
     resources :followings, only: [:index]
     resources :followers, only: [:index]

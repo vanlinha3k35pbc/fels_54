@@ -45,19 +45,25 @@ Category.create!(title: "Example Category",
     - Support others\n
     - Comment on GitHub.")
 
-9.times do
+19.times do
   title = Faker::Lorem.sentence
   description = Faker::Lorem.paragraph
   Category.create! title: title, description: description
 end
 
 #Words
-categories = Category.take 6
-5.times do
+categories = Category.all
+50.times do
   content = Faker::Lorem.word
   categories.each{|category| category.words.create! content: content}
 end
 
-#Learned Words
-words = Category.first.words.take 3
-words.each{|word| User.first.learned_words.create! word_id: word.id}
+#Answers
+words = Word.all
+words.each do |w|
+  4.times do |n|
+    content = Faker::Lorem.word
+    correct = n == 0 ? true : false
+    w.answers.create! content: content, correct: correct
+  end
+end

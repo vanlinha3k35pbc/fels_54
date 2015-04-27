@@ -1,0 +1,16 @@
+<% provide :title, "Result - #{@lesson.category.title}" %>
+<%= form_for [@category, @lesson] do |f| %>
+  <%= f.fields_for :results, @lesson.results do |builder| %>
+    <div class="result">
+      <%= render 'result_fields', f: builder %>
+
+      <% if builder.object.answer %>
+        <% if builder.object.answer.correct %>
+          <div class="correct-notice"><%= "Correct" %></div>
+        <% else %>
+          <div class="incorrect-notice"><%= "Your answer is incorrect!" %></div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
