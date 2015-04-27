@@ -341,3 +341,22 @@ input {
   border: 1px solid black;
   padding: 20px;
 }
+
+/* admin - word */
+
+.fields{
+  .a-content{
+    width: 36%;
+    border-radius: 3px;
+  }
+  .a-correct{
+    float:right;
+    width: 0;
+  }
+}
+
+.number{
+  list-style-type: decimal;
+}
+
+

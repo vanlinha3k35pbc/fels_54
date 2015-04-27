@@ -12,12 +12,27 @@
     <%= link_to 'Back', admin_categories_path, class: 'btn btn-primary' %>
   </div> 
 
-  <table>
-  <tr>
-    <th> Word </th>
-    <th> Answer </th>
-    <th> Action </th>
-  </tr>
-    <tr> </tr>
+  <table class="table table-bordered">
+    <tr>
+      <td><strong> Sum of word: <%= @words.count %> </strong></td>
+      <td><strong>Mean</strong></td>
+      <%= will_paginate @words %>
+    <tr>  
+    <% @words.map do |word| %> 
+      <tr>
+        <td>
+          <%= word.content %>
+        </td>
+        <td>
+          <% word.answers.each do |answer| %>
+            <%= answer.content if answer.correct == true %>
+          <% end %>
+        </td>   
+        <td>
+          <%= link_to "View", admin_category_word_path(@category, word) %>
+        </td>     
+      <tr>
+    <% end %>
   </table>
-</div>
+  </div>
+

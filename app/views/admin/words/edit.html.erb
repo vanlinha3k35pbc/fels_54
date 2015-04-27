@@ -1,0 +1,23 @@
+<% provide :title, "Edit Word" %>
+<h1> Edit Word </h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for [:admin, @category, @word] do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <p>
+        <%= f.label :content, "Word:" %> <br/>
+        <%= f.text_field :content, class: 'form-control' %>
+      </p>
+
+      <p class="answer">
+        <%= f.fields_for :answers do |builder| %>
+          <%= render 'answer_fields', f: builder %>
+        <% end %>   
+      </p>
+
+      <p> <%= link_to_add_fields "Add Answer", f, :answers %> </p>  
+      <p> <%= f.submit "Save Changes", 
+        class: 'btn btn-primary col-md-4 col col-md-offset-4' %> </p> 
+    <% end %>
+  </div>
+</div>
