@@ -10,14 +10,21 @@ Rails.application.routes.draw do
   get 'categories' => 'categories#index'
   
   resources :users, only: [:create, :show]
-  namespace :admin do
-    resources :users
-  end  
+
+  resources :relationships, only: [:create, :destroy]
+  
   resources :users do
     resources :followings, only: [:index]
     resources :followers, only: [:index]
   end
-  resources :relationships, only: [:create, :destroy]
+
+  namespace :admin do
+    resources :users
+    resources :categories do
+      resources :words
+    end
+  end 
+
  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
