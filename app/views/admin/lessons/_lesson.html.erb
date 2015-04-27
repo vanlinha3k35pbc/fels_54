@@ -1,0 +1,13 @@
+<tr>
+  <td><%= gravatar_for lesson.user %></td>
+  <td><%= link_to lesson.user.name, lesson.user %></td>
+  <td><%= lesson.category.title %></td>
+  <td><%= lesson.sum_correct %></td>
+  <td><%= lesson.results.count %></td>
+  <td><%= lesson.created_at %></td>
+  <td>
+    <%= link_to 'Details', '#' %>
+    <%= link_to 'Delete', admin_lesson_path(lesson), method: :delete,
+      data: {confirm: "You sure?"}%> %>
+  </td>
+</tr>

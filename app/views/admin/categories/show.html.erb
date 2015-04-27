@@ -8,7 +8,16 @@
     <p class="c-title"> Description: </p>
     <p> &nbsp;&nbsp;&nbsp; <%= @category.description %> </p>
     <hr>
-    <%= link_to 'Add Word', '#', class: 'btn btn-primary' %>
+    <%= link_to 'Add Word', new_admin_category_word_path(@category), class: 'btn btn-primary' %>
     <%= link_to 'Back', admin_categories_path, class: 'btn btn-primary' %>
   </div> 
+
+  <table>
+  <tr>
+    <th> Word </th>
+    <th> Answer </th>
+    <th> Action </th>
+  </tr>
+    <tr> </tr>
+  </table>
 </div>
