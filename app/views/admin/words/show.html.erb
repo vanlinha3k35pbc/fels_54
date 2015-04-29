@@ -1,0 +1,17 @@
+<div class="d-category">
+  <Strong> Category: </strong> <%= @category.title %> 
+  <br>
+  <strong> Description: </strong> <%= @category.description %>
+  <ul> 
+    <li><strong><%= @word.content %></strong>
+      <ul>
+        <% @word.answers.each do |answer| %>
+          <li><%= answer.content %>  -- <%= answer.correct %> 
+          </li>
+        <%end%>
+      </ul>    
+    </li>
+  </ul>
+  <%= link_to "Back word list", admin_category_words_path(@category, @word) %>
+  | <%= link_to "Back category list", admin_category_path(@category) %>
+</div>

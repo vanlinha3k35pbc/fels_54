@@ -1,0 +1,23 @@
+<tr>
+  <td><%= word.id %></td>
+  <td><%= word.content %></td>
+
+  <td>
+    <% word.answers.each do |answer| %> 
+      <%= answer.content %> <br>
+    <% end %>
+  </td>
+
+  <td>
+    <% word.answers.each do |answer| %> 
+      <%= answer.correct %> <br>
+    <% end %>
+  <td>
+  
+  <%= link_to "Details", admin_category_word_path(word.category, word) %>
+  | <%= link_to "Edit", edit_admin_category_word_path(word.category, word) %>
+  | <%= link_to "Delete", [:admin,  word.category, word], method: :delete, 
+    data: {confirm: "You sure"} %>  
+</tr>
+<br>
+<%= will_paginate %>

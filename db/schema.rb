@@ -11,12 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20150424064759) do
+ActiveRecord::Schema.define(version: 20150429033008) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "content"
-    t.boolean  "isCorrect"
+    t.boolean  "correct"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "word_id"
@@ -60,7 +59,12 @@ ActiveRecord::Schema.define(version: 20150424064759) do
   create_table "results", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "word_id"
+    t.integer  "answer_id"
   end
+
+  add_index "results", ["answer_id"], name: "index_results_on_answer_id"
+  add_index "results", ["word_id"], name: "index_results_on_word_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
