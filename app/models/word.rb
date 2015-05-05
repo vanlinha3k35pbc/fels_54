@@ -8,7 +8,7 @@ class Word < ActiveRecord::Base
 
   validates :category_id, presence: true
   validates :content, presence: true
-  validate :atleast_one_is_checked
+  # validate :atleast_one_is_checked
 
   learned_word_ids = "SELECT word_id FROM learned_words WHERE user_id = :user_id"
   scope :learned_words, ->user {where "id IN (#{learned_word_ids})",
@@ -16,6 +16,8 @@ class Word < ActiveRecord::Base
 
   scope :not_learned_words, ->user {where "id NOT IN (#{learned_word_ids})",
     user_id: user.id}
+
+  scope :find_word_by_category, ->category_id {where category_id: category_id if category_id}
 
   def atleast_one_is_checked
     if answers.select{|answer| answer.correct}.blank?
