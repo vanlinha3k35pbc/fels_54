@@ -19,6 +19,14 @@ module SessionsHelper
     user == current_user
   end
 
+  def admin_user
+    redirect_to root_url unless current_user.admin?
+  end
+
+  def logged_in_admin?
+    current_user.admin?
+  end
+
   def logged_in?
     !current_user.nil?
   end

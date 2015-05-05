@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'signin' => "sessions#new"
   post'signin' => "sessions#create"
   delete 'signout' => 'sessions#destroy'
-  resources :users, only: [:create, :show]
+  resources :users, only: [:create, :show, :index]
 
   resources :categories, only: :index
   resources :words, only: :index
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    root 'dashboards#index'
     resources :users
     resources :lessons, only: [:index, :destroy]
     resources :categories do
