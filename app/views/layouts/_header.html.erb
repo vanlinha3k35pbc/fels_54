@@ -18,6 +18,11 @@
             <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
           </ul>
         </li>
+        <li>
+          <% if current_user.admin? %> 
+            <%= link_to "Dash-board", admin_root_path %>
+          <% end %>
+        </li>
       <% else %>
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "Help", help_path %></li>
