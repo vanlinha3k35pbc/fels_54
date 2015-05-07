@@ -14,8 +14,16 @@
     </section>
 
     <section>
+        Learned <%= pluralize(@learned_words_amount, "Word") %>
+      </section>
+
+    <section>
       <%= render 'shared/follow_form' if logged_in? %>
     </section>
   </aside>
+  <div class="col-md-8">
+    <section class="activity">
+      <%= render @activities %>
+    </section>
+  </div>
 </div>
- 

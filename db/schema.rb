@@ -11,17 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150429022701) do
+ActiveRecord::Schema.define(version: 20150507033651) do
+
+  create_table "activities", force: :cascade do |t|
+    t.integer  "action"
+    t.integer  "target_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "activities", ["user_id"], name: "index_activities_on_user_id"
 
   create_table "answers", force: :cascade do |t|
     t.string   "content"
     t.boolean  "correct"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "word_id"
   end
-
-  add_index "answers", ["word_id"], name: "index_answers_on_word_id"
 
   create_table "categories", force: :cascade do |t|
     t.string   "title"

@@ -9,6 +9,8 @@ class UsersController < ApplicationController
 
   def show 
     @user = User.find params[:id]
+    @learned_words_amount = Word.learned_words(current_user).count
+    @activities = @user.activities.sort
   end
 
 

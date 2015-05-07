@@ -24,7 +24,7 @@ class Word < ActiveRecord::Base
 
   def atleast_one_is_checked
     if answers.select{|answer| answer.correct}.blank?
-      errors.add :base, "You have to choose a correct option"
+      errors.add :base, "You have to check a correct checkbox"
     end
   end
 end
