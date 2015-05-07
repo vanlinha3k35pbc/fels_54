@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150429033008) do
+ActiveRecord::Schema.define(version: 20150429022701) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "content"
@@ -30,20 +30,15 @@ ActiveRecord::Schema.define(version: 20150429033008) do
     t.text     "description"
   end
 
-  create_table "learned_words", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "user_id"
-    t.integer  "word_id"
-  end
-
-  add_index "learned_words", ["user_id"], name: "index_learned_words_on_user_id"
-  add_index "learned_words", ["word_id"], name: "index_learned_words_on_word_id"
-
   create_table "lessons", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+    t.integer  "category_id"
   end
+
+  add_index "lessons", ["category_id"], name: "index_lessons_on_category_id"
+  add_index "lessons", ["user_id"], name: "index_lessons_on_user_id"
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"
@@ -59,11 +54,13 @@ ActiveRecord::Schema.define(version: 20150429033008) do
   create_table "results", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "lesson_id"
     t.integer  "word_id"
     t.integer  "answer_id"
   end
 
   add_index "results", ["answer_id"], name: "index_results_on_answer_id"
+  add_index "results", ["lesson_id"], name: "index_results_on_lesson_id"
   add_index "results", ["word_id"], name: "index_results_on_word_id"
 
   create_table "users", force: :cascade do |t|

@@ -245,6 +245,11 @@ input {
 }
 
 /* Wordlist */
+.category-filter {
+  width: 500px;
+  height: 400px;
+  margin: 0 auto;
+}
 .words {
   list-style: none;
   -webkit-column-count: 3; /* Chrome, Safari, Opera */
@@ -359,4 +364,30 @@ input {
   list-style-type: decimal;
 }
 
+/*Lesson - Result*/
+.correct-notice {
+  color: blue;
+}
 
+.incorrect-notice {
+  color: red;
+}
+
+.question {
+  ul {
+    list-style: none;
+    li {
+     margin-left: 10px;
+    }
+  }
+  margin-top: 25px;
+}
+
+.lesson {
+  width: 500px;
+  height: 400px;
+  margin: 0 auto;
+}
+.answersheet {
+  font-size: 25px;
+}

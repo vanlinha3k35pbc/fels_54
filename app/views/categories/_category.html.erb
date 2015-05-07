@@ -3,10 +3,16 @@
     <div class="col-md-6">
       <h2><%= category.title %></h2>
       <p><%= category.description %></p>
-      <a href="#" class="btn btn-primary" role="button">Start</a>
-    </div>
-    <div class="col-md-6">
-      <%= image_tag "rails.png", alt: "Rails logo" %>
+      <% learned_words_amount = category.words.learned_words(current_user).count %>
+      <% category_words_amount = category.words.count %>
+
+      <% if learned_words_amount < category_words_amount %>
+        <%= "You have learned #{learned_words_amount}/#{category_words_amount}" %>
+        <%= link_to "Start", new_category_lesson_path(category_id: category.id),
+          class: "btn btn-lg btn-primary" %>
+      <% else %>
+        <%= "You have learned all lessons in this category" %>
+      <% end %>
     </div>
   </div>
 </li>

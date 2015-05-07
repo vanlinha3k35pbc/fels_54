@@ -2,7 +2,7 @@ class WordsController < ApplicationController
   before_action :logged_in_user
 
   def index
-    @categories = Category.all
+    @categories = Category.sort
     @category = Category.find_by(id: params[:category_id]) || Category.first
     
     if %w[learned_words not_learned_words].include? params[:filter]

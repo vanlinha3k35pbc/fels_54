@@ -15,6 +15,7 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+//= require jquery.turbolinks
 function remove_fields(link) {  
   $(link).prev().val("true"); 
   $(link).closest('.fields').remove();
@@ -26,3 +27,22 @@ function add_fields(link, association, content) {
   $(link).parent().prev().append(content.replace(re, new_id));
 } 
 
+$(document).ready(function(){
+  $(".answersheet").each(function(e) {
+    if (e != 0) $(this).hide();
+  });
+
+  $("#next").click(function(){
+    var nextDiv = $(".answersheet:visible").next(".answersheet");
+    if (nextDiv.length == 0) nextDiv = $(".answersheet:first")
+    $(".answersheet:visible").hide();
+    nextDiv.show();
+  });
+
+  $("#prev").click(function(){
+    var prevDiv = $(".answersheet:visible").prev(".answersheet");
+    if (prevDiv.length == 0) prevDiv = $(".answersheet:last")
+    $(".answersheet:visible").hide();
+    prevDiv.show();
+  });
+});
