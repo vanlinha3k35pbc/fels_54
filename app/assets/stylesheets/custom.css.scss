@@ -270,6 +270,7 @@ input {
   overflow: auto;
   margin-top: 0;
   padding: 0;
+  margin-left: 20px;
   a {
     float: left;
     padding: 0 10px;
@@ -360,9 +361,15 @@ input {
   }
 }
 
-.number{
-  list-style-type: decimal;
+/* user - profile */
+
+#user-info{
+  margin-left: 20px;
+  .gravatar{
+    margin-left: 30px;
+  }
 }
+
 
 /*Lesson - Result*/
 .correct-notice {
@@ -391,3 +398,16 @@ input {
 .answersheet {
   font-size: 25px;
 }
+
+#user-name{
+  margin-top: 95px;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* follow_form */
+#follow_form{
+  margin-left: 20px;
+}
+

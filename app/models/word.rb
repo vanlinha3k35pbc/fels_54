@@ -4,7 +4,7 @@ class Word < ActiveRecord::Base
   has_many :answers, dependent: :destroy
   has_many :results, dependent: :destroy
 
-  accepts_nested_attributes_for :answers
+  accepts_nested_attributes_for :answers, allow_destroy: true
 
   validates :category_id, presence: true
   validates :content, presence: true

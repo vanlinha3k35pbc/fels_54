@@ -32,10 +32,11 @@ class Admin::WordsController < ApplicationController
   end
 
   def update
+    @category = Category.find params[:category_id]
     @word = Word.find params[:id]
     if @word.update_attributes word_params 
       flash[:success] = "Word updated"
-      redirect_to admin_category_words_path @word
+      redirect_to admin_category_words_path @category
     else
       render :edit
     end

@@ -18,7 +18,7 @@
 //= require jquery.turbolinks
 function remove_fields(link) {  
   $(link).prev().val("true"); 
-  $(link).closest('.fields').remove();
+  $(link).closest('.fields').hide();
 } 
 
 function add_fields(link, association, content) {

@@ -25,7 +25,7 @@
     <h3> <%= @title %> </h3>
     <% if @users.any? %>
       <ul class="users follow">
-        <%= render partial: "admin/users/user", collection: @users %>
+        <%= render partial: "users/user", collection: @users %>
       </ul>
       <%= will_paginate @users %>
     <% end %>
