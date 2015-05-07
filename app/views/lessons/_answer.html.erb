@@ -1,0 +1,14 @@
+<li class="answer">
+  <div class="row">
+    <div class="col-md-1"><%= f.radio_button :answer_id, answer.id %></div>
+    <div class="col-md-6">
+      <% if result.answer && answer.correct %>
+        <span class="<%= result.answer_id == answer.id ? 'correct-notice' : 'incorrect-notice' %>">
+          <%= answer.content %>
+        </span>
+      <% else %>
+        <%= answer.content %>
+      <% end %>
+    </div>
+  </div>
+</li>

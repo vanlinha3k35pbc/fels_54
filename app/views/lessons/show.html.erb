@@ -1,4 +1,9 @@
 <% provide :title, "Result - #{@lesson.category.title}" %>
+<strong>
+  <%= link_to @lesson.user.name, @lesson.user %>
+  <%= "Get #{@right_answers_amount}/#{@lesson.results.count}" %>
+</strong>
+
 <%= form_for [@category, @lesson] do |f| %>
   <%= f.fields_for :results, @lesson.results do |builder| %>
     <div class="result">

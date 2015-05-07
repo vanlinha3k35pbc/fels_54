@@ -9,7 +9,8 @@ class Word < ActiveRecord::Base
   validates :content, presence: true
   validate :atleast_one_is_checked
 
-  learned_word_ids = "SELECT word_id FROM results JOIN lessons WHERE lessons.user_id = :user_id AND answer_id IS NOT NULL"
+  learned_word_ids = "SELECT word_id FROM results JOIN lessons ON results.lesson_id = lessons.id" 
+  learned_word_ids << " WHERE (lessons.user_id = :user_id AND answer_id IS NOT NULL)"
   scope :learned_words, ->user {where "id IN (#{learned_word_ids})", 
     user_id: user.id}
 
@@ -23,7 +24,7 @@ class Word < ActiveRecord::Base
 
   def atleast_one_is_checked
     if answers.select{|answer| answer.correct}.blank?
-      errors.add :base, "You have to choose a correct option"
+      errors.add :base, "You have to choose a correct answer of word"
     end
   end
 end

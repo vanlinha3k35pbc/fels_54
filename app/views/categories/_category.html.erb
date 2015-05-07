@@ -6,12 +6,19 @@
       <% learned_words_amount = category.words.learned_words(current_user).count %>
       <% category_words_amount = category.words.count %>
 
-      <% if learned_words_amount < category_words_amount %>
-        <%= "You have learned #{learned_words_amount}/#{category_words_amount}" %>
-        <%= link_to "Start", new_category_lesson_path(category_id: category.id),
-          class: "btn btn-lg btn-primary" %>
+      <% case category_words_amount %>
+      <% when 0 %>
+        <strong>This category don't have any lessons!</strong>
       <% else %>
-        <%= "You have learned all lessons in this category" %>
+        <% if learned_words_amount < category_words_amount %>
+          <strong>
+            <%= "You have learned #{learned_words_amount}/#{category_words_amount}" %>
+          </strong>
+          <%= link_to "Start", new_category_lesson_path(category_id: category.id),
+            class: "btn btn-lg btn-primary" %>
+        <% else %>
+          <strong>You have learned all lessons in this category</strong>
+        <% end %>
       <% end %>
     </div>
   </div>

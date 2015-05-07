@@ -1,0 +1,17 @@
+<li>
+  <% if activity.target %>
+    <%= link_to activity.user.name, activity.user %>
+
+    <% if activity.learn? %>
+      <% lesson = activity.target %>
+      Learned <%= pluralize(Result.done_words_amount(lesson), "Word") %> in
+        <%= link_to lesson.category.title, [lesson.category, lesson] %>
+    <% else %>
+      <% following = activity.target %>
+      <%= activity.follow? ? "Followed" : "Unfollowed" %>
+        <%= link_to following.name, following %>
+    <% end %>
+
+    -(<%= activity.created_at.strftime "%Y/%m/%d" %>)
+  <% end %>
+</li>

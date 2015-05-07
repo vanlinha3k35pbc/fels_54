@@ -21,5 +21,9 @@ module ApplicationHelper
   
   def link_to_remove_fields name, f
     f.hidden_field(:_destroy) + link_to(name, '#',onclick: "remove_fields(this)")  
-  end  
+  end
+
+  def learned_words_amount user
+    Word.learned_words(user).count
+  end
 end

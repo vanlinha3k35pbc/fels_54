@@ -1,5 +1,6 @@
 class Admin::UsersController < ApplicationController  
-  before_action :logged_in_user, except: [:show, :new, :create], :admin_user, only: :destroy
+  before_action :logged_in_user, except: [:show, :new, :create]
+  before_action :admin_user, only: :destroy
 
   def edit
     @user = User.find params[:id]
@@ -25,5 +26,5 @@ class Admin::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password,
       :password_confirmation)
-  end 
+  end
 end

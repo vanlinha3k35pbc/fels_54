@@ -5,5 +5,5 @@ class Category < ActiveRecord::Base
   validates :title, presence: true
   validates :description, presence: true
 
-  scope :sort, -> {order title: :asc}
+  scope :created_time_sort, -> {order title: :asc}
 end

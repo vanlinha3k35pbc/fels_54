@@ -7,14 +7,13 @@ Rails.application.routes.draw do
   get 'signin' => "sessions#new"
   post'signin' => "sessions#create"
   delete 'signout' => 'sessions#destroy'
-  resources :users, only: [:create, :show, :index]
 
   resources :categories, only: :index do
     resources :lessons, only: [:new, :create, :show]
   end
   resources :words, only: :index
 
-  resources :users do
+  resources :users, only: [:create, :show, :index] do
     resources :followings, only: [:index]
     resources :followers, only: [:index]
   end

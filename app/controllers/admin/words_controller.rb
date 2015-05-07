@@ -49,8 +49,8 @@ class Admin::WordsController < ApplicationController
   end
 
   private
-    def word_params
-      params.required(:word).permit(:content, answers_attributes: [:id, :content, 
-        :correct, :_destroy])
-    end
+  def word_params
+    params.required(:word).permit(:content, answers_attributes: [:id, :content, 
+      :correct, :_destroy])
+  end
 end

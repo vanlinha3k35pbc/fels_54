@@ -14,7 +14,7 @@ User.create!(
   admin: true,
 )
 
-99.times do |n|
+19.times do |n|
   name = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
@@ -53,17 +53,16 @@ end
 
 #Words
 categories = Category.all
-50.times do
-  content = Faker::Lorem.word
-  categories.each{|category| category.words.create! content: content}
-end
-
-#Answers
-words = Word.all
-words.each do |w|
-  4.times do |n|
+categories.each do |category| 
+  30.times do
     content = Faker::Lorem.word
-    correct = n == 0 ? true : false
-    w.answers.create! content: content, correct: correct
+    word = category.words.build content: content
+    4.times do |n|
+      content = Faker::Lorem.word
+      correct = n == 0 ? true : false
+      word.answers.build content: content, correct: correct
+    end
+    word.save!
   end
 end
+

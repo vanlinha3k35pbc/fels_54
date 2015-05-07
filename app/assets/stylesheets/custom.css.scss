@@ -252,6 +252,7 @@ input {
 }
 .words {
   list-style: none;
+  margin-top :20px;
   -webkit-column-count: 3; /* Chrome, Safari, Opera */
   -moz-column-count: 3; /* Firefox */
   column-count: 3;
@@ -357,7 +358,7 @@ input {
   }
   .a-correct{
     float:right;
-    width: 0;
+    width: 20px;
   }
 }
 
@@ -411,3 +412,10 @@ input {
   margin-left: 20px;
 }
 
+/* Activity */
+.activity {
+  li {
+    list-style: none;
+  }
+  margin-top: 25px;
+}
