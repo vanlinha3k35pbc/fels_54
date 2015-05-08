@@ -1,6 +1,6 @@
 class Admin::CategoriesController < ApplicationController
-  before_action :logged_in_user
-  before_action :admin_user
+  before_action :logged_in_user, :admin_user
+
   def index
     @categories = Category.paginate page: params[:page], per_page: 15
   end
@@ -47,5 +47,4 @@ class Admin::CategoriesController < ApplicationController
   def category_params
     params.require(:category).permit(:title, :description)
   end
-
 end
