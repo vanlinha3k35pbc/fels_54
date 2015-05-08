@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require_tree .
 //= require jquery.turbolinks
+
 function remove_fields(link) {  
   $(link).prev().val("true"); 
   $(link).closest('.fields').hide();
